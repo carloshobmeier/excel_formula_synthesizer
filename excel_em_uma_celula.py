@@ -19,8 +19,9 @@ def resolve_cell(cell_ref: str, dynamic_cell: str, cache: dict) -> str:
 
     # 3. Perguntar ao usuário
     user_input = input(
-        f"O que há na célula {Fore.RED}{cell_ref}{Style.RESET_ALL}? {Fore.CYAN}"
+        f"{Fore.WHITE}O que há na célula {Fore.RED}{cell_ref}{Style.RESET_ALL}? {Fore.CYAN}"
     ).lstrip('=').strip()
+
 
     if not extract_references(user_input):
         # É um valor puro. Ex.: 100, "ABC", etc.
@@ -55,7 +56,7 @@ def synthesize_formula():
     # 2. Solicita a fórmula inicial (sem o '=' no input)
     # Obs.: se a fórmula copiada vier com "=", podemos removê-lo com .lstrip('=').strip()
     formula = input(
-        f"Copie aqui a fórmula inicial (ex: {Fore.BLUE}=B2 + C3 * 2{Style.RESET_ALL}): {Fore.CYAN}"
+        f"{Fore.WHITE}Copie aqui a fórmula inicial (ex: {Fore.BLUE}=B2 + C3 * 2{Style.RESET_ALL}): {Fore.CYAN}"
     ).lstrip('=').strip()
 
     print(f"{Style.RESET_ALL}----------------------------------------")
@@ -66,7 +67,7 @@ def synthesize_formula():
     # 4. Expandir a fórmula principal
     final_formula = expand_formula(formula, dynamic_cell, cache)
 
-    print("\nFórmula final simplificada:")
+    print(f"\n{Fore.WHITE}Fórmula final simplificada:")
     print(f"{Fore.BLUE}={final_formula}{Style.RESET_ALL}")
 
 if __name__ == "__main__":
